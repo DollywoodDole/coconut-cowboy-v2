@@ -1,0 +1,58 @@
+"use client"; // Make home page a client component for animations
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import ProductCarousel from '../components/ProductCarousel';
+
+const products = [
+  { id: 1, name: 'Western Shirt', price: 59.99, image: '/products/shirt.jpg' },
+  { id: 2, name: 'Cowboy Hat', price: 39.99, image: '/products/hat.jpg' },
+  { id: 3, name: 'Denim Jacket', price: 89.99, image: '/products/jacket.jpg' },
+];
+
+export default function Home() {
+  return (
+    <div className="flex flex-col min-h-screen bg-gray-100">
+      <Header />
+      <main className="flex-1">
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="h-screen flex items-center justify-center bg-cover bg-center"
+          style={{ backgroundImage: 'url(/hero-bg.jpg)' }}
+        >
+          <div className="text-center text-white">
+            <motion.h1
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-5xl font-bold mb-4"
+            >
+              Welcome to Coconut Cowboy
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-xl mb-6"
+            >
+              Western style, modern edge.
+            </motion.p>
+            <Link
+              href="/shop"
+              className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition"
+            >
+              Shop Now
+            </Link>
+          </div>
+        </motion.section>
+        <ProductCarousel products={products} />
+      </main>
+      <Footer />
+    </div>
+  );
+}
