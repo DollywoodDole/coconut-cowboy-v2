@@ -3,7 +3,18 @@ import ProductCard from './ProductCard';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-export default function ProductCarousel({ products }) {
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+};
+
+type ProductCarouselProps = {
+  products: Product[];
+};
+
+export default function ProductCarousel({ products }: ProductCarouselProps) {
   const settings = {
     dots: true,
     infinite: true,
@@ -12,7 +23,7 @@ export default function ProductCarousel({ products }) {
     slidesToScroll: 1,
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: {-slidesToShow: 1 } },
+      { breakpoint: 640, settings: { slidesToShow: 1 } },
     ],
   };
 
