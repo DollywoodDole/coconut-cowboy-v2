@@ -1,14 +1,17 @@
+import Link from 'next/link';
+
 export default function Header() {
   return (
     <header className="bg-black text-white p-4 sticky top-0 z-50">
       <nav className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Coconut Cowboy</h1>
-        <ul className="flex space-x-6">
-          <li><a href="/" className="hover:underline">Home</a></li>
-          <li><a href="/shop" className="hover:underline">Shop</a></li>
-          <li><a href="/about" className="hover:underline">About</a></li>
-          <li><a href="/contact" className="hover:underline">Contact</a></li>
+        <Link href="/" className="text-2xl font-bold">Coconut Cowboy</Link>
+        <ul className="flex space-x-6 md:flex hidden">
+          <li><Link href="/" className="hover:underline">Home</Link></li>
+          <li><Link href="/shop" className="hover:underline">Shop</Link></li>
+          <li><Link href="/about" className="hover:underline">About</Link></li>
+          <li><Link href="/contact" className="hover:underline">Contact</Link></li>
         </ul>
+        {/* Mobile menu toggle (add later if needed) */}
       </nav>
     </header>
   );
