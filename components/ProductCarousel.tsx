@@ -1,3 +1,5 @@
+"use client"; // Add this at the top to mark as a client component
+
 import Slider from 'react-slick';
 import ProductCard from './ProductCard';
 import 'slick-carousel/slick/slick.css';

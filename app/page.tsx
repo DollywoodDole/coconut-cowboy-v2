@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCarousel from '../components/ProductCarousel';
 
-// Sample product data (replace with Shopify API data later if needed)
 const products = [
   { id: 1, name: 'Western Shirt', price: 59.99, image: '/products/shirt.jpg' },
   { id: 2, name: 'Cowboy Hat', price: 39.99, image: '/products/hat.jpg' },

@@ -1,38 +1,17 @@
-"use client";
-
-import { useState } from 'react';
-import Link from 'next/link';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 export default function Contact() {
-  const [status, setStatus] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message'),
-      }),
-    });
-    if (response.ok) {
-      setStatus('Message sent successfully!');
-    } else {
-      setStatus('Error sending message.');
-    }
-  };
-
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
       <main className="flex-1 container mx-auto py-12">
         <h1 className="text-4xl font-bold text-center mb-8">Contact Us</h1>
-        <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
+        <form
+          action="/api/contact"
+          method="POST"
+          className="max-w-lg mx-auto space-y-4"
+        >
           <div>
             <label htmlFor="name" className="block text-lg font-medium">
               Name
@@ -75,7 +54,6 @@ export default function Contact() {
           >
             Send Message
           </button>
-          {status && <p className="text-center mt-4">{status}</p>}
         </form>
       </main>
       <Footer />

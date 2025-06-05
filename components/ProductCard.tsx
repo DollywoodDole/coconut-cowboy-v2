@@ -1,3 +1,5 @@
+"use client"; // Add this to make ProductCard a client component
+
 import Link from 'next/link';
 import Image from 'next/image';
 
