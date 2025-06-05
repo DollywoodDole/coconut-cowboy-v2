@@ -1,7 +1,8 @@
-"use client"; // Add this to make ProductCard a client component
+"use client";
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 type Product = {
   id: number;
@@ -12,7 +13,13 @@ type Product = {
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="border rounded-lg p-4 hover:shadow-lg transition">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="news
+      border rounded-lg p-4 hover:shadow-lg transition"
+    >
       <Image
         src={product.image}
         alt={product.name}
@@ -28,6 +35,6 @@ export default function ProductCard({ product }: { product: Product }) {
       >
         View Details
       </Link>
-    </div>
+    </motion.div>
   );
 }
